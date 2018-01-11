@@ -1,4 +1,4 @@
-## LwIP TCP/IP with FreeRTOS
+# LwIP TCP/IP with FreeRTOS
 
 This application guides STM32Cube HAL API users to run LwIP TCP/IP stack with FreeRTOS by testing on `Nucleo-F429ZI`. 
 I'm using STM32CubeMX code generator to test the LwIP TCP/IP stack + FreeRTOS and compile with AC6.
@@ -30,15 +30,15 @@ datasheet,
 Remember to increase your FreeRTOS stack size for example at StartDefaultTask
 ``` c
 
-	osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128*5);
+	osThreadDef( defaultTask, StartDefaultTask, osPriorityNormal, 0, 128*5 );
 	
 ```
-Or else, insufficient stack size will cause you board to hang
+Or other wise, insufficient stack size will cause your board to hang
 	
-## Special Note :
-There is a retarget printf in this project where you can find at `__io_putchar` inside syscall.c. The retarget is used for UART3 which connected to ST-Link V2.
-To debug Lwip stack, please insert `LWIP_DEBUG` at `Preprocessor` in the AC6. In order to debug Lwip error messages, please refer to < opt.h >
-and active those error messages that you want. For example
+### Special Note :
+There is a retarget printf in this project where you can find at `__io_putchar` inside `syscall.c`. This retarget is used for UART3 which connected to ST-Link V2.
+To debug Lwip stack, please insert `LWIP_DEBUG` at `Preprocessor` in the AC6. In order to debug more detail error messages, please refer to `opt.h`
+and activate those error messages that you want. For example
 ``` c
 
 	#define ICMP_DEBUG   LWIP_DBG_ON //LWIP_DBG_OFF
